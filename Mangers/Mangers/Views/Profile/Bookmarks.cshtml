@@ -1,0 +1,51 @@
+﻿@model List<MangersDAL.Models.Manga>
+
+<link rel="stylesheet" href="~/css/bookmarks.css" />
+<link rel="stylesheet" type="text/css" href="~/css/catalog.css">
+<link rel="stylesheet" type="text/css" href="~/css/profile.css">
+
+<div class="markers-header">
+    <h1>
+        Закладки
+        <button class="markers-header-mode">
+            <svg class="layout-header-icon-svg" viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"></path></svg>
+        </button>
+    </h1>
+    <div class="markers-header-items">
+        <button class="markers-header-items-item">
+            <a style="color: white;" asp-controller="Profile" asp-action="Bookmarks" asp-route-name=@User.Identity.Name asp-route-bookmarkType="Читаю">Читаю</a>
+        </button>
+        <button class="markers-header-items-item">
+            <a style="color: white;" asp-controller="Profile" asp-action="Bookmarks" asp-route-name=@User.Identity.Name asp-route-bookmarkType="Прочитаю">Прочитаю</a>
+        </button>
+        <button class="markers-header-items-item">
+            <a style="color: white;" asp-controller="Profile" asp-action="Bookmarks" asp-route-name=@User.Identity.Name asp-route-bookmarkType="Прочитано">Прочитано</a>
+        </button>
+        <button class="markers-header-items-item">
+            <a style="color: white;" asp-controller="Profile" asp-action="Bookmarks" asp-route-name=@User.Identity.Name asp-route-bookmarkType="Отложено">Отложено</a>
+        </button>
+        <button class="markers-header-items-item">
+            <a style="color: white;" asp-controller="Profile" asp-action="Bookmarks" asp-route-name=@User.Identity.Name asp-route-bookmarkType="Брошено">Брошено</a>
+        </button>
+    </div>
+</div>
+
+<div class="markers-content">
+    <div class="markers-content-sorting">
+        <div class="catalog-content-sorting-field">По названию</div>
+        <svg class="layout-header-icon-svg" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M7 10l5 5 5-5z"></path></svg>
+    </div>
+
+    <div class="account-markers-content-items">
+        @foreach (var bookmark in Model)
+        {
+            <div class="catalog-content-items-item">
+                <a asp-controller="Manga" asp-action="MangaMainInfo" asp-route-mangaId="@bookmark.MangaId">
+                    <div class="catalog-content-items-item-img" style="background-image: url(@bookmark.PhotoPath);">
+                    </div>
+                    <h4>@bookmark.Name</h4>
+                </a>
+            </div>
+        }
+    </div>
+</div>

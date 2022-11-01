@@ -1,0 +1,154 @@
+﻿@model MangersDAL.Models.Manga
+
+@{ 
+    Layout = "_LayoutWithoutFooter";
+}
+
+<link rel="stylesheet" href="~/css/mangamaininfo.css" />
+
+<div class="main-info-mainContainer">
+    <div class="main-info-mainContainer-topblock">
+        <div class="main-info-mainContainer-topblock-right">
+            <div class="main-info-mainContainer-topblock-right-card">
+                <div class="main-info-mainContainer-topblock-right-card-picture">
+                    <img src="@Model.PhotoPath">
+                </div>
+                <div class="main-info-mainContainer-topblock-right-card-buttons">
+                    <a asp-controller="Manga" asp-action="MangaChapterView" asp-route-mangaId="@Model.MangaId" asp-route-curentChapterNumber="1" asp-route-user="@User.Identity.Name" class="main-info-mainContainer-topblock-right-card-buttons-read">
+                        Читать
+                    </a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div onclick="myFunction2()" class="main-info-mainContainer-topblock-right-card-buttons-bookmark dropbtn">
+                            Добавить в закладки
+                            <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5z"></path>
+                            </svg>
+                        </div>
+                        <form method="post" asp-controller="Manga" asp-action="AddToBookmark">
+                            <div id="myDropdown2" class="dropdown-content">
+                                <a onclick="SelectBookmark(event)">Прочитаю</a>
+                                <a onclick="SelectBookmark(event)">Читаю</a>
+                                <a onclick="SelectBookmark(event)">Прочитано</a>
+                                <a onclick="SelectBookmark(event)">Отложено</a>
+                                <a onclick="SelectBookmark(event)">Брошено</a>
+                            </div>
+                            <input id="selectedBookmark" type="hidden" name="bookamarkType" />
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="main-info-mainContainer-topblock-left">
+            <h1 class="main-info-mainContainer-topblock-left-title">
+                @Model.Name
+            </h1>
+            <div class="main-info-mainContainer-topblock-left-info">
+                <div class="main-info-mainContainer-topblock-left-info-rating">
+                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                    @Model.Rating
+                </div>
+                <a href="#" class="main-info-mainContainer-topblock-left-info-type">
+                    @Model.MangaType
+                </a>
+                <div class="main-info-mainContainer-topblock-left-info-date">@Model.YearOfCreation</div>
+            </div>
+        </div>
+    </div>
+    <div class="main-info-mainContainer-bottomblock">
+        <div class="main-info-mainContainer-bottomblock-container">
+            <div class="main-info-mainContainer-bottomblock-container-leftblock">
+
+            </div>
+            <div class="main-info-mainContainer-bottomblock-container-rightblock">
+                <div class="main-info-mainContainer-bottomblock-container-rightblock-nav">
+
+                        <a asp-controller="Manga" asp-action="MangaMainInfo" asp-route-mangaId="@Model.MangaId">
+                            <button>
+                                Описание
+                            </button>
+                        </a>
+                        <a asp-controller="Manga" asp-action="MangaChapters" asp-route-mangaId="@Model.MangaId">
+                            <button>
+                                Главы
+                            </button>
+                        </a>
+                </div>
+                <div class="main-info-mainContainer-bottomblock-container-rightblock-tags">
+                    <a href="#">
+                        <span>@Model.MangaGenre</span>
+                    </a>
+                </div>
+                <h2 class="main-info-mainContainer-bottomblock-container-rightblock-description">
+                    @Model.Description
+                </h2>
+                <div class="main-info-mainContainer-bottomblock-container-rightblock-comments">
+                    <h4>
+                        @if (Model.Comments != null)
+                        {
+                            <span>Комментарии(@Model.Comments.Count)</span>
+                        }
+                        else
+                        {
+                            <span>Коментарии</span>
+                        }
+                    </h4>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form method="post" asp-controller="Manga" asp-action="PostComment" asp-route-mangaId="@Model.MangaId" asp-route-owner="@User.Identity.Name">
+                            <div class="main-info-mainContainer-bottomblock-container-rightblock-comments-form">
+                                <input type="text" name="content" placeholder="Оставьте комментарий">
+                                <div class="main-info-mainContainer-topblock-left-info-rating">
+                                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                                    </svg>
+                                    <input type="number" name="estimation" placeholder="Ваша оценка" min="1" max="5" />
+                                </div>
+                                <button type="submit">Отправить</button>
+                            </div>
+                        </form>
+                    }
+                    <div class="main-info-mainContainer-bottomblock-container-rightblock-comments-items">
+                        @if (Model.Comments != null)
+                        {
+                            @foreach (var comment in Model.Comments)
+                            {
+                                <div class="main-info-mainContainer-bottomblock-container-rightblock-comments-items-item">
+                                    <a href="#">
+                                        <img src="@comment.Owner.AvatarPicture">
+                                    </a>
+                                    <div class="main-info-mainContainer-bottomblock-container-rightblock-comments-items-item-body">
+                                        <div class="main-info-mainContainer-bottomblock-container-rightblock-comments-items-item-body-head">
+                                            <a href="#">@comment.Owner.UserName</a>
+                                            <small style="margin-left: 5px;">@comment.Estimation</small>
+                                        </div>
+                                        <div class="main-info-mainContainer-bottomblock-container-rightblock-comments-items-item-body-text">
+                                            @comment.Content
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>Коментариев нету, напишите свой первым!</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function SelectBookmark(event) {
+        let bookmark = event.currentTarget.innerText;
+        let input = document.getElementById("selectedBookmark");
+        input.value = bookmark;
+        let userName = "@User.Identity.Name";
+        let mangaId = @Model.MangaId;
+        $.post('https://localhost:44380/Manga/AddToBookmark', { bookmarkType: input.value, user: userName, mangaId: mangaId });
+    }
+</script>

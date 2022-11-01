@@ -1,0 +1,80 @@
+﻿<link rel="stylesheet" type="text/css" href="~/css/account.css">
+<link rel="stylesheet" type="text/css" href="~/css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<div class="account_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Поставить аватарку</h2>
+                    <form asp-controller="Profile" asp-action="EditPhoto" method="post" enctype="multipart/form-data"> 
+                        <div class="user-info"><span>Аватарка:</span><input name="avatar" required type="file" accept=".png, .jpg, .jpeg, .gif"></div>
+                        <button type="submit">Сохранить</button>
+                    </form>
+                    <div>@TempData["EditMailMessage"]</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Поменять пароль</h2>
+                    <form id="EditPassForm" method="post" asp-controller="Profile" asp-action="EditPassword">
+                        <div class="user-info"><span>Текущий пароль:</span><input id="currPass" name="OldPassword" type="password"></div>
+                        <span></span>
+                        <div class="user-info"><span>Новый пароль: </span><input id="newPass" name="NewPassword" type="password"></div>
+                        <span></span>
+                        <div class="user-info"><span>Повтори пароль:</span><input id="confPass" name="ConfirmPassword" type="password"></div>
+                        <span></span>
+                        <div style="font-size: 20px; font-weight: 700;">@TempData["EditPasswordMessage"]</div>
+                        <input style="display:block;" type="submit" value="Сохранить">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#EditPassForm").validate({
+            rules: {
+                OldPassword: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 32
+                },
+                NewPassword: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 32
+                },
+                ConfirmPassword: {
+                    required: true,
+                    equalTo: '#newPass'
+                }
+            },
+            messages: {
+                OldPassword: {
+                    required: "Current password is required",
+                    minlength: "Password must be longer than 8",
+                    maxlength: "Password must be shorter than 32"
+                },
+                NewPassword: {
+                    required: "New password is required",
+                    minlength: "Password must be longer than 8",
+                    maxlength: "Password must be shorter than 32"
+                },
+                ConfirmPassword: {
+                    required: "Confirm password is required",
+                    equalTo: "Passwords don't match"
+                }
+            },
+            errorElement: "span",
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.parent());
+            }
+        });
+    });
+</script>

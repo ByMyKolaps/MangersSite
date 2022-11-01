@@ -1,0 +1,205 @@
+﻿@using Mangers.ViewModels
+@model CatalogViewModel
+
+<link rel="stylesheet" type="text/css" href="~/css/catalog.css">
+<link rel="stylesheet" type="text/css" href="~/css/mangachapterview.css">
+
+<div class="catalog-header">
+    <h1>Каталог манги</h1>
+    <form data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#content" asp-controller="Catalog" asp-action="Catalog" method="post">
+        <div class="catalog-header-filters">
+            <div onclick="myFunction2(event)" class="catalog-header-filters-filter dropbtn">
+                @if (Model.mangaType == null || Model.mangaType == "")
+                {
+                    <span id="currentMangaType">Типы</span>
+                }
+                else
+                {
+                    <span id="currentMangaType">@Model.mangaType</span>
+                }
+                <svg class="layout-header-icon-svg" viewBox="0 -6 24 24"><path d="M7 10l5 5 5-5z"></path></svg>
+            </div>
+            <div class="dropdown-content">
+                <a onclick="SelectMangaType(event)" href="#">Манхва</a>
+                <a onclick="SelectMangaType(event)" href="#">Манга</a>
+                <a onclick="SelectMangaType(event)" href="#">Новелла</a>
+                <input type="hidden" name="mangaType" id="mangaType" value="@Model.mangaType"/>
+            </div>
+            <div onclick="myFunction2(event)" class="catalog-header-filters-filter dropbtn">
+                @if (Model.mangaGenre == null || Model.mangaGenre == "")
+                {
+                    <span id="currentMangaGenre">Жанры</span>
+                }
+                else
+                {
+                    <span id="currentMangaGenre">@Model.mangaGenre</span>
+                }
+                <svg class="layout-header-icon-svg" viewBox="0 -6 24 24"><path d="M7 10l5 5 5-5z"></path></svg>
+            </div>
+            <div class="dropdown-content">
+                <a onclick="SelectMangaGenre(event)" href="#">Исекай</a>
+                <a onclick="SelectMangaGenre(event)" href="#">Детектив</a>
+                <a onclick="SelectMangaGenre(event)" href="#">Гарем</a>
+                <input type="hidden" name="mangaGenre" id="mangaGenre"  value="@Model.mangaGenre"/>
+            </div>
+            <div onclick="myFunction2(event)" class="catalog-header-filters-filter dropbtn">
+                @if (Model.mangaCategory == null || Model.mangaCategory == "")
+                {
+                    <span id="currentMangaCategory">Категории</span>
+                }
+                else
+                {
+                    <span id="currentMangaCategory">@Model.mangaCategory</span>
+                }
+                <svg class="layout-header-icon-svg" viewBox="0 -6 24 24"><path d="M7 10l5 5 5-5z"></path></svg>
+            </div>
+            <div class="dropdown-content">
+                <a onclick="SelectMangaCategory(event)" href="#">Демоны</a>
+                <a onclick="SelectMangaCategory(event)" href="#">Драконы</a>
+                <a onclick="SelectMangaCategory(event)" href="#">Дружба</a>
+                <input type="hidden" name="mangaCategory" id="mangaCategory" value="@Model.mangaCategory" />
+            </div>
+        </div>
+        <div style="display:flex; justify-content: center;">
+            <div onclick="myFunction2(event)" class="catalog-content-sorting dropbtn">
+                <div class="catalog-content-sorting-field">
+                    @if (Model.sortingField == null || Model.sortingField == "")
+                    {
+                        <span id="currentSortingField">Сортировать по</span>
+                    }
+                    else
+                    {
+                        <span id="currentSortingField">@Model.sortingField</span>
+                    }
+
+                </div>
+                <svg class="layout-header-icon-svg" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M7 10l5 5 5-5z"></path></svg>
+            </div>
+            <div class="dropdown-content">
+                <a onclick="SelectSortingField(event)" href="#">Сортировать по</a>
+                <a onclick="SelectSortingField(event)" href="#">По рейтингу</a>
+                <a onclick="SelectSortingField(event)" href="#">По дате</a>
+                <input type="hidden" name="sortingField" id="sortingField" value="@Model.sortingField" />
+            </div>
+            <div onclick="myFunction2(event)" class="catalog-content-sorting dropbtn">
+                <div class="catalog-content-sorting-field">
+                    @if (Model.sortingType == null || Model.sortingType == "")
+                    {
+                        <span id="currentSortingType">Тип сортировки</span>
+                    }
+                    else
+                    {
+                        <span id="currentSortingType">@Model.sortingType</span>
+                    }
+                </div>
+                <svg class="layout-header-icon-svg" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M7 10l5 5 5-5z"></path></svg>
+            </div>
+            <div class="dropdown-content">
+                <a onclick="SelectSortingType(event)" href="#">Сортировать по</a>
+                <a onclick="SelectSortingType(event)" href="#">По возрастанию</a>
+                <a onclick="SelectSortingType(event)" href="#">По убыванию</a>
+                <input type="hidden" name="sortingType" id="sortingType" value="@Model.sortingType" />
+            </div>
+        </div>
+        <input type="hidden" name="searchString" value="@Model.searchString"/>
+        <button type="submit">Найти</button>
+    </form>
+</div>
+
+<div class="catalog-content">
+    <div class="catalog-content-items">
+        @foreach (var item in Model.Mangas)
+        {
+            <div class="catalog-content-items-item">
+                <a asp-controller="Manga" asp-action="MangaMainInfo" asp-route-mangaId="@item.MangaId">
+                    <div class="catalog-content-items-item-img" style="background-image: url(@item.PhotoPath);">
+                        <div class="catalog-content-items-item-rating">
+                            @item.Rating
+                        </div>
+                    </div>
+                    <h4>@item.Name</h4>
+                    <p>@item.MangaType</p>
+                </a>
+            </div>
+        }
+    </div>
+
+    <ul class="catalog-content-pages">
+        @if (Model.currentPage != 1)
+        {
+            <form data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#content" asp-controller="Catalog" asp-action="Catalog" asp-route-currentPage="@(Model.currentPage-1)" method="post">
+                <button type="submit">
+                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                        <path d="M14 7l-5 5 5 5V7z"></path>
+                    </svg>
+                </button>
+            </form>
+        }
+        <button>@Model.currentPage</button>
+        @if (Model.currentPage != Model.maxPages)
+        {
+            <form data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#content" asp-controller="Catalog" asp-action="Catalog" asp-route-currentPage="@(Model.currentPage+1)" method="post">
+                <button type="submit">
+                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                        <path d="M10 17l5-5-5-5v10z"></path>
+                    </svg>
+                </button>
+                <input type="hidden" name="sortingType" value="@Model.sortingType" />
+                <input type="hidden" name="sortingField" value="@Model.sortingField" />
+                <input type="hidden" name="mangaType" value="@Model.mangaType" />
+                <input type="hidden" name="mangaGenre" value="@Model.mangaGenre" />
+                <input type="hidden" name="mangaCategory" value="@Model.mangaCategory" />
+                <input type="hidden" name="searchString" value="@Model.searchString" />
+            </form>
+        }
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+    function myFunction2(event) {
+        event.currentTarget.nextSibling.nextSibling.classList.toggle("show");
+    }
+
+    function SelectMangaType(event) {
+        let mangaType = event.currentTarget.innerText;
+        let currentMangaType = document.getElementById("currentMangaType");
+        currentMangaType.innerText = mangaType;
+        let input = document.getElementById("mangaType");
+        input.value = currentMangaType.innerText;
+
+    }
+
+    function SelectMangaGenre(event) {
+        let mangaGenre = event.currentTarget.innerText;
+        let currentMangaGenre = document.getElementById("currentMangaGenre");
+        currentMangaGenre.innerText = mangaGenre;
+        let input = document.getElementById("mangaGenre");
+        input.value = currentMangaGenre.innerText;
+    }
+
+    function SelectMangaCategory(event) {
+        let mangaCategory = event.currentTarget.innerText;
+        let currentMangaCategory = document.getElementById("currentMangaCategory");
+        currentMangaCategory.innerText = mangaCategory;
+        let input = document.getElementById("mangaCategory");
+        input.value = currentMangaCategory.innerText;
+    }
+
+    function SelectSortingField(event) {
+        let sortingField = event.currentTarget.innerText;
+        let currentSortingField = document.getElementById("currentSortingField");
+        currentSortingField.innerText = sortingField;
+        let input = document.getElementById("sortingField");
+        input.value = currentSortingField.innerText;
+    }
+
+    function SelectSortingType(event) {
+        let sortingType = event.currentTarget.innerText;
+        let currentSortingType = document.getElementById("currentSortingType");
+        currentSortingType.innerText = sortingType;
+        let input = document.getElementById("sortingType");
+        input.value = currentSortingType.innerText;
+    }
+
+</script>

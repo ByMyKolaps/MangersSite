@@ -1,0 +1,23 @@
+﻿<form asp-controller="Admin" asp-action="AddManga" method="post" enctype="multipart/form-data">
+    <input type="text" name="Name" placeholder="Название манги" />
+    <input type="text" name="Description" placeholder="Описание манги" />
+    <input type="number" name="YearOfCreation" placeholder="Год создания" />
+    <select name="MangaCategory">
+        <option value="Дружба">Дружба</option>
+        <option value="Драконы">Драконы</option>
+        <option value="Драконы">Демоны</option>
+    </select>
+    <select name="MangaGenre">
+        <option value="Исекай">Исекай</option>
+        <option value="Детектив">Детектив</option>
+        <option value="Гарем">Гарем</option>
+    </select>
+    <select name="MangaType">
+        <option value="Манхва">Манхва</option>
+        <option value="Манга">Манга</option>
+        <option value="Новелла">Новелла</option>
+    </select>
+    <input type="radio" name="IsPremium" value="true"/>Премиум
+    <input type="file" name="photo" accept=".png, .jpg, .jpeg, .gif"/>
+    <button type="submit">Создать</button>
+</form>

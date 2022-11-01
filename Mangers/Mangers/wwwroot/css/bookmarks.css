@@ -1,0 +1,59 @@
+﻿.markers-header {
+    padding: 8px 16px 0px;
+    background: #171717;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255, 0.06);
+}
+
+    .markers-header h1 {
+        margin: 0;
+        margin-bottom: 24px;
+        font-size: 2.0243rem;
+        font-weight: 500;
+        line-height: 1.235;
+    }
+
+.markers-header-mode {
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    background-color: transparent;
+}
+
+.markers-header-items {
+    position: relative;
+    justify-content: center;
+}
+
+.markers-header-items-item {
+    color: rgba(255,255,255,.78);
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: -apple-system,Nunito Sans,SF Pro Text,SF Pro Icons,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 500;
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    min-height: 48px;
+    min-width: 120px;
+}
+
+.markers-content {
+    padding: 8px 0 16px;
+    max-width: 1040px !important;
+    margin-left: auto;
+    margin-right: auto;
+    height: 60vh;
+}
+
+.markers-content-sorting {
+    margin: 4px 0px 12px;
+    display: flex;
+    min-height: 40px;
+    padding-left: 8px;
+    display: flex;
+    font-size: 1rem;
+    cursor: pointer;
+}

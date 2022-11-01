@@ -1,0 +1,7 @@
+﻿<form asp-controller="Admin" asp-action="AddChapter" method="post" enctype="multipart/form-data">
+    <input type="number" name="MangaId" placeholder="Идентификатор манги" />
+    <input type="number" name="ChapterNumber" placeholder="Номер главы" />
+    <input type="number" name="CountOfPages" placeholder="Количество страниц" />
+    <input type="file" multiple name="Pages" accept=".png, .jpg, .jpeg, .gif" />
+    <button type="submit">Создать</button>
+</form>

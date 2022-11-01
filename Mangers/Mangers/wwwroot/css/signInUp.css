@@ -1,0 +1,130 @@
+﻿body {
+    height: 100vh;
+    margin: 0;
+    font-size: 0.875rem;
+    font-family: -apple-system,Nunito Sans,SF Pro Text,SF Pro Icons,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.layout-header-icon-svg {
+    fill: white;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 1.5rem;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+    padding: 20px;
+    background-color: #171717;
+    color: #f2f2f2;
+}
+
+.signInUp-form {
+    max-width: 506px;
+    padding: 24px;
+    border-radius: 8px;
+    background-color: rgba(120,120,120, 0.05);
+}
+
+.signIn-form-topBlock {
+    padding: 13px 0px;
+    text-align: center;
+}
+
+    .signIn-form-topBlock h5 {
+        margin: 1em 0;
+        font-weight: 600;
+        font-size: 1.4993rem;
+    }
+
+.signIn-form-topBlock-socials {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.signIn-form-topBlock-socials-item {
+    background-color: inherit;
+    border: none;
+    display: block;
+    padding: 8px;
+    font-size: 16px;
+    min-width: 65px;
+    margin-left: 2px !important;
+    margin-right: 2px !important;
+    width: 80px;
+    text-decoration: none;
+    color: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.signIn-form-bottomBlock {
+    padding: 5px 16px 24px;
+}
+
+.signIn-form-bottomBlock-input {
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    display: inline-flex;
+    color: #f2f2f2;
+    cursor: text;
+    position: relative;
+    font-size: 1rem;
+    border-radius: 4px;
+    background-color: #171717;
+}
+
+    .signIn-form-bottomBlock-input input {
+        font: inherit;
+        color: currentColor;
+        width: 100%;
+        border: 0;
+        height: 1.1875em;
+        padding: 6px 0 7px;
+        box-sizing: content-box;
+        padding: 18.5px 14px;
+        border-radius: inherit;
+        background: none;
+    }
+
+.signIn-form-bottomBlock-redirect {
+    text-align: center;
+    margin: 7px 0;
+}
+
+.signIn-form-bottomBlock-signIn {
+    margin-top: 16px;
+    margin-bottom: 3px;
+    width: 100%;
+    padding: 8px 22px;
+    font-size: 0.9375rem;
+    color: #fff;
+    background-color: #4e6baf;
+    line-height: 1.5;
+    text-transform: uppercase;
+    border: 0;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.signUp-form-bottomBlock-input-svgContainer {
+    margin-right: 8px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+}

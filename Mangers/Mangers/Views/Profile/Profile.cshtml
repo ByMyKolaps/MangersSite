@@ -1,0 +1,65 @@
+﻿@using Mangers.ViewModels
+@model MangersDAL.Models.User
+
+
+<link rel="stylesheet" type="text/css" href="~/css/profile.css">
+<link rel="stylesheet" type="text/css" href="~/css/catalog.css">
+
+<div class="account-header">
+    <div class="account-header-content">
+        <div class="account-header-content-avatar">
+            <div class="account-header-content-avatar-image">
+                <img src="@Model.AvatarPicture">
+                <svg class="layout-header-icon-svg" viewBox="0 0 24 24"><path d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z"></path></svg>
+            </div>
+        </div>
+        <div class="account-header-content-info">
+            <h4>
+                <b>@Model.UserName</b>
+            </h4>
+            <div class="account-header-content-info-cashANDset">
+                <div class="account-header-content-info-cashANDset-cash">
+                    @if(User.IsInRole("Premium"))
+                    {
+                        <span>Premium</span>
+                    }
+                    else
+                    {
+                        <span>Basic</span>
+                    }
+                </div>
+                <button>
+                    <a style="color: white;" asp-controller="Profile" asp-action="EditProfile">
+                        Редактировать
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="account-markers">
+    <div class="account-markers-content">
+        <div class="account-markers-content-header">
+            <button class="account-markers-content-header-marker">Читаю</button>
+            <button class="account-markers-content-header-marker">Читаю</button>
+            <button class="account-markers-content-header-marker">Читаю</button>
+            <button class="account-markers-content-header-marker">Читаю</button>
+            <button class="account-markers-content-header-marker">Читаю</button>
+            <button class="account-markers-content-header-marker">Читаю</button>
+        </div>
+        <div class="account-markers-content-items">
+            <div class="catalog-content-items-item">
+                <a href="#">
+                    <div class="catalog-content-items-item-img" style="background-image: url(/img/latest1.jpg);">
+                        <div class="account-markers-content-items-item-likes">
+                            <svg class="layout-header-icon-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+                            975.3K
+                        </div>
+                    </div>
+                    <h4>Наруто</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

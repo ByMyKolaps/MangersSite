@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/main.css">
+<script src="https://kit.fontawesome.com/8539c4533b.js" crossorigin="anonymous"></script>
+
+<div class="main-popular">
+    @{ 
+        if (User.Identity.IsAuthenticated)
+        {
+            <h1>@User.Identity.Name</h1>
+        }
+    }
+    <h2>
+        <svg class="layout-header-icon-svg" viewBox="0 -2 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"></path></svg>
+        Популярное
+    </h2>
+    <div class="main-popular-item">
+        <a class="main-popular-item-link" href="#">
+            <div style="height: 360px"><img class="main-popular-item-img" src="~/img/popular1.jpg"></div>
+            <h4>Ванпанчмен</h4>
+            <p>Манга</p>
+        </a>
+    </div>
+    <div class="main-popular-item">
+        <a class="main-popular-item-link" href="#">
+            <div style="height: 360px"><img class="main-popular-item-img" src="~/img/popular2.jpg"></div>
+            <h4>Убийца гоблинов</h4>
+            <p>Манга</p>
+        </a>
+    </div>
+    <div class="main-popular-item">
+        <a class="main-popular-item-link" href="#">
+            <div style="height: 360px"><img class="main-popular-item-img" src="~/img/popular3.jpg"></div>
+            <h4>Наруто</h4>
+            <p>Манга</p>
+        </a>
+    </div>
+    <div class="main-popular-item">
+        <a class="main-popular-item-link" href="#">
+            <div style="height: 360px"><img class="main-popular-item-img" src="~/img/SweetHome.jpg"></div>
+            <h4>Милый дом</h4>
+            <p>Манхва</p>
+        </a>
+    </div>
+    <div class="main-popular-item">
+        <a class="main-popular-item-link" href="#">
+            <div style="height: 360px"><img class="main-popular-item-img" src="~/img/popular5.jpg"></div>
+            <h4>Берсерк</h4>
+            <p>Манга</p>
+        </a>
+    </div>
+</div>
+
+<div class="main-popular">
+    <h2>
+        <i style="color:#ed2553" class="fas fa-box-tissue"></i>
+        Новинки
+    </h2>
+    <div class="main-popular-item">
+        <a class="main-popular-item-link" href="#">
+            <div style="height: 360px"><img class="main-popular-item-img" src="~/img/ABladeThatCleavesDemons.jpg"></div>
+            <h4>Клинок, рассекающий демонов</h4>
+            <p>Манга</p>
+        </a>
+    </div>
+    <div class="main-popular-item">
+        <a class="main-popular-item-link" href="#">
+            <div style="height: 360px"><img class="main-popular-item-img" src="~/img/AttackOfTheTitans.jpg"></div>
+            <h4>Атака титанов</h4>
+            <p>Манга</p>
+        </a>
+    </div>
+    <div class="main-popular-item">
+        <a class="main-popular-item-link" href="#">
+            <div style="height: 360px"><img class="main-popular-item-img" src="~/img/Eva.jpg"></div>
+            <h4>Евангелион</h4>
+            <p>Манга</p>
+        </a>
+    </div>
+    <div class="main-popular-item">
+        <a class="main-popular-item-link" href="#">
+            <div style="height: 360px"><img class="main-popular-item-img" src="~/img/ChainsawMan.jpg"></div>
+            <h4>Человек-бензопила</h4>
+            <p>Манга</p>
+        </a>
+    </div>
+    <div class="main-popular-item">
+        <a class="main-popular-item-link" href="#">
+            <div style="height: 360px"><img class="main-popular-item-img" src="~/img/StainsGate.jpg"></div>
+            <h4>Врата Штейна</h4>
+            <p>Манга</p>
+        </a>
+    </div>
+</div>

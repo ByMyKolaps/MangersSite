@@ -1,0 +1,142 @@
+﻿@using Mangers.ViewModels
+@model MangaViewChapterViewModel
+
+@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+    <link rel="stylesheet" type="text/css" href="~/css/mangachapterview.css">
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <div class="main-container-header">
+                <div class="main-container-header-left">
+                    <a class="layout-header-content-iconAndcatalog-icon header-hover" href="#">
+                        <svg class="layout-header-icon-svg" viewBox="0 0 496 512">
+                            <path d="m509.148438 188.171875c-6.347657-23.707031-22.421876-42.722656-44.085938-52.871094 2.042969-23.835937-6.390625-47.265625-23.742188-64.617187-17.355468-17.351563-40.78125-25.792969-64.617187-23.742188-10.148437-21.667968-29.167969-37.738281-52.871094-44.089844-23.707031-6.351562-48.210937-1.941406-67.832031 11.746094-19.617188-13.6875-44.125-18.097656-67.828125-11.746094-23.707031 6.351563-42.722656 22.425782-52.871094 44.089844-23.835937-2.042968-47.265625 6.390625-64.617187 23.742188-17.355469 17.351562-25.789063 40.78125-23.746094 64.617187-21.664062 10.148438-37.734375 29.164063-44.085938 52.871094-6.351562 23.703125-1.941406 48.210937 11.746094 67.828125-13.6875 19.621094-18.097656 44.128906-11.746094 67.832031 6.351563 23.703125 22.421876 42.722657 44.085938 52.871094-2.042969 23.835937 6.390625 47.265625 23.746094 64.617187 17.351562 17.351563 40.78125 25.792969 64.617187 23.742188 10.144531 21.664062 29.164063 37.738281 52.867188 44.085938 23.707031 6.351562 48.210937 1.945312 67.832031-11.746094 13.707031 9.5625 29.800781 14.601562 46.335938 14.597656 7.132812 0 14.355468-.9375 21.496093-2.851562 23.703125-6.347657 42.722657-22.421876 52.871094-44.085938 23.835937 2.039062 47.261719-6.390625 64.617187-23.742188 17.351563-17.355468 25.785157-40.78125 23.742188-64.617187 21.664062-10.148437 37.738281-29.167969 44.085938-52.871094 6.351562-23.707031 1.941406-48.210937-11.746094-67.832031 13.6875-19.617188 18.097656-44.125 11.746094-67.828125zm-41.894532 78.285156c12.867188 13.234375 17.699219 31.78125 12.921875 49.613281-4.777343 17.828126-18.234375 31.472657-35.996093 36.503907l-14.03125 3.972656 3.574218 14.136719c4.527344 17.894531-.5625 36.371094-13.617187 49.425781-13.050781 13.050781-31.527344 18.144531-49.425781 13.617187l-14.136719-3.578124-3.972657 14.035156c-5.027343 17.757812-18.675781 31.214844-36.503906 35.992187-17.828125 4.777344-36.378906-.050781-49.613281-12.917969l-10.453125-10.167968-10.457031 10.167968c-13.234375 12.867188-31.78125 17.699219-49.613281 12.917969-17.828126-4.777343-31.476563-18.234375-36.503907-35.992187l-3.972656-14.035156-14.136719 3.578124c-17.894531 4.527344-36.375-.566406-49.425781-13.617187-13.054687-13.054687-18.144531-31.53125-13.617187-49.425781l3.574218-14.136719-14.03125-3.972656c-17.761718-5.027344-31.214844-18.675781-35.992187-36.503907-4.78125-17.832031.050781-36.378906 12.917969-49.613281l10.164062-10.457031-10.160156-10.453125c-12.867188-13.234375-17.695313-31.78125-12.917969-49.613281 4.777344-17.832032 18.234375-31.476563 35.996094-36.503906l14.03125-3.972657-3.578125-14.140625c-4.527344-17.894531.566406-36.371094 13.617187-49.421875 13.054688-13.054687 31.53125-18.144531 49.425781-13.617187l14.136719 3.574218 3.972657-14.03125c5.027343-17.761718 18.675781-31.21875 36.507812-35.996093 17.828125-4.773438 36.375.054687 49.609375 12.921875l10.457031 10.164062 10.457032-10.164062c13.234374-12.871094 31.777343-17.703125 49.609374-12.921875 17.832032 4.777343 31.476563 18.234375 36.507813 35.996093l3.96875 14.03125 14.140625-3.574218c17.894531-4.527344 36.371094.5625 49.421875 13.613281 13.054687 13.054687 18.144531 31.53125 13.617187 49.425781l-3.574218 14.136719 14.03125 3.972656c17.761718 5.03125 31.21875 18.675781 35.996094 36.507813 4.777343 17.828125-.054688 36.375-12.921876 49.609375l-10.164062 10.457031zm0 0" />
+                            <path d="m256.183594 109.429688c-.066406 0-.125 0-.1875 0-38.578125 0-74.847656 15.011718-102.148438 42.277343-27.34375 27.308594-42.402344 63.632813-42.402344 102.28125v65.394531h29.996094v-65.394531c0-30.625 11.933594-59.414062 33.605469-81.058593 21.632813-21.605469 50.378906-33.5 80.949219-33.5h.148437c63.089844.078124 114.414063 51.46875 114.414063 114.558593v22.570313c0 46.425781-37.769532 84.199218-84.199219 84.199218s-84.203125-37.773437-84.203125-84.199218v-13.734375c0-30.488281 24.804688-55.292969 55.292969-55.292969h3.433593c28.59375 0 51.855469 23.265625 51.855469 51.859375 0 13.050781-10.617187 23.667969-23.667969 23.667969-13.054687 0-23.671874-10.617188-23.671874-23.667969v-13.734375h-29.996094v13.734375c0 29.59375 24.074218 53.667969 53.667968 53.667969 29.589844 0 53.667969-24.074219 53.667969-53.667969 0-45.136719-36.722656-81.855469-81.855469-81.855469h-3.433593c-47.03125 0-85.289063 38.261719-85.289063 85.289063v13.734375c0 62.96875 51.226563 114.199218 114.199219 114.199218 62.96875 0 114.199219-51.230468 114.199219-114.203124v-22.566407c0-79.609375-64.765625-144.457031-144.375-144.558593zm0 0" />
+                        </svg>
+                    </a>
+                    <a asp-controller="Manga" asp-action="MangaMainInfo" asp-route-mangaId="@Model.MangaId" class="main-container-header-left-mangaTitle">
+                        @Model.MangaTitle
+                    </a>
+                    <div class="main-container-header-left-chaptersNav">
+                        @if (Model.currentChapterNumber != 1)
+                        {
+                            <a asp-controller="Manga" asp-action="MangaChapterView" asp-route-mangaId="@Model.MangaId" asp-route-curentChapterNumber="@(Model.currentChapterNumber-1)" asp-route-user="@User.Identity.Name">
+                                <button>
+                                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                                        <path d="M14 7l-5 5 5 5V7z"></path>
+                                    </svg>
+                                </button>
+                            </a>
+                        }
+                        <span>
+                            <button>
+                                @Model.currentChapterNumber
+                            </button>
+                        </span>
+                        @if (Model.currentChapterNumber != Model.MangaChapters.Count)
+                        {
+                            <a asp-controller="Manga" asp-action="MangaChapterView" asp-route-mangaId="@Model.MangaId" asp-route-curentChapterNumber="@(Model.currentChapterNumber+1)" asp-route-user="@User.Identity.Name">
+                                <button>
+                                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                                        <path d="M10 17l5-5-5-5v10z"></path>
+                                    </svg>
+                                </button>
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="main-container-header-mangaBookmark1">
+                    <div class="main-container-header-mangaBookmark2">
+                        <div class="main-container-header-mangaBookmark3">
+                            <div class="main-container-header-mangaBookmark4">
+                                Буду читать
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span style="color: white;">|</span>
+                <a href="#" class="layout-header-content-buttons">
+                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                        <path d="M19 18l2 1V3c0-1.1-.9-2-2-2H8.99C7.89 1 7 1.9 7 3h10c1.1 0 2 .9 2 2v13zM15 5H5c-1.1 0-2 .9-2 2v16l7-3 7 3V7c0-1.1-.9-2-2-2z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="layout-header-content-buttons">
+                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path>
+                    </svg>
+                </a>
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="layout-header-content-buttons dropbtn">
+                        <a class="layout-header-content-buttons-avatar">
+                            <img src="Assets/img/profile1.jpg">
+                        </a>
+                    </button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#">ByMyKolaps</a>
+                        <a href="#">Баланс</a>
+                        <a href="#">Выйти</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="c87">
+            <div class="c89">
+                @if (Model.MangaChapters != null && Model.MangaChapters.Count != 0)
+                {
+                    @foreach (var image in Model.ChapterPages)
+                    {
+                        <div class="c90">
+                            <img class="c300" src="@image.ImageUrl">
+                        </div>
+                    }
+                    <div class="c94">
+                        <div class="c95">
+                            @if (Model.currentChapterNumber != 1)
+                            {
+                                <a asp-controller="Manga" asp-action="MangaChapterView" asp-route-mangaId="@Model.MangaId" asp-route-curentChapterNumber="@(Model.currentChapterNumber-1)" asp-route-user="@User.Identity.Name">
+                                    <button class="MuiButton-root c113">
+                                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                                        <path d="M14 7l-5 5 5 5V7z"></path>
+                                    </svg>
+                                    Назад
+                                    </button>
+                                </a>
+                            }
+                            <a asp-controller="Manga" asp-action="MangaMainInfo" asp-route-mangaId="@Model.MangaId" class="MuiButton-root c113">К тайтлу</a>
+                            @if (Model.currentChapterNumber != Model.MangaChapters.Count)
+                            {
+                                <a asp-controller="Manga" asp-action="MangaChapterView" asp-route-mangaId="@Model.MangaId" asp-route-curentChapterNumber="@(Model.currentChapterNumber+1)" asp-route-user="@User.Identity.Name">
+                                    <button class="MuiButton-root c113">
+                                    Вперед
+                                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                                        <path d="M10 17l5-5-5-5v10z"></path>
+                                    </svg>
+                                    </button>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="c90">
+                        <h1>Первая глава скоро выйдет, ожидайте!</h1>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

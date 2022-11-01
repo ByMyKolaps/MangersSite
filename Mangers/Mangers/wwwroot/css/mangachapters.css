@@ -1,0 +1,52 @@
+﻿.main-info-mainContainer-bottomblock-container-rightblock-chapters {
+    margin: 4px 0px 0;
+}
+
+.main-info-mainContainer-bottomblock-container-rightblock-chapters-chapter {
+    background: rgba(140,140,140,.02);
+    margin: 4px 0px;
+    padding: 8px 8px 8px 12px;
+    background: rgba(120,120,120, 0.05);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.main-info-mainContainer-bottomblock-container-rightblock-chapters-chapter-wtf {
+    color: rgba(255,255,255,.38);
+    padding: 3px 18px 3px 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.main-info-mainContainer-bottomblock-container-rightblock-chapters-chapter-info {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.main-info-mainContainer-bottomblock-container-rightblock-chapters-chapter-info-number {
+    white-space: nowrap;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    font-size: 1rem;
+    font-family: -apple-system,Nunito Sans,SF Pro Text,SF Pro Icons,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 400;
+    line-height: 1.75;
+    margin: 0;
+}
+
+.main-info-mainContainer-bottomblock-container-rightblock-chapters-chapter-info-dateANDcreator {
+    color: rgba(140,140,140,1);
+    margin: 2px 0;
+    font-size: 13px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}

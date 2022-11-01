@@ -1,0 +1,83 @@
+﻿<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript">
+</script>
+
+<link rel="stylesheet" type="text/css" href="~/css/profile.css">
+<link rel="stylesheet" type="text/css" href="~/css/catalog.css">
+
+<div class="account-header">
+    <div class="account-header-content">
+        <div class="account-header-content-avatar">
+            <div class="account-header-content-avatar-image">
+                <img src="/img/profile1.jpg">
+                <svg class="layout-header-icon-svg" viewBox="0 0 24 24"><path d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z"></path></svg>
+            </div>
+        </div>
+        <div class="account-header-content-info">
+            <h4>
+                <b>ByMyKolaps</b>
+            </h4>
+            <p>Наше мыло: muradymov.bulat@mail.ru</p>
+        </div>
+    </div>
+</div>
+
+
+<div style="margin-bottom: 20px; margin-left: 93px; margin-right: 93px; max-width: 50%;">
+    <h3>На офис</h3>
+    <div id='MyMap1' style="height: 700px;">
+        <script type='text/javascript'>
+
+            // Когда yandex библиотека загрузится, то вызовется моя функция initYMaps
+            ymaps.ready(initYMaps);
+
+            function initYMaps() {
+                // создание Yandex карты
+                var myMap = create_yandex_map('MyMap1', 640, 480)
+
+                // добавляем 1-ую точку
+                add_yandex_point(myMap, 49.122126, 55.792134, 'Наш офис');
+
+                // указываем центр и zoom Yandex карты
+                center_and_zoom_yandex_map(myMap, 49.106405, 55.796127, 11);
+            }
+
+            function create_yandex_map(map_id, width, height) {
+                // get div
+                var elemDiv = document.getElementById(map_id);
+                if (elemDiv == null)
+                    return null;
+                elemDiv.style.width = width;
+                elemDiv.style.height = height;
+
+                // create map
+                var myMap = new ymaps.Map(map_id,
+                    {
+                        center: [0, 0], // default center
+                        zoom: 0 // default zoom
+                    });
+
+                return myMap;
+            }
+
+            function add_yandex_point(myMap, latitud, longit, title) {
+                // add label
+                var myPlacemark = new ymaps.Placemark([longit, latitud],
+                    {
+                        balloonContentHeader: title,
+                        balloonContentBody: '',
+                        balloonContentFooter: ''
+                    }
+                );
+                myMap.geoObjects.add(myPlacemark);
+            }
+
+            function center_and_zoom_yandex_map(myMap, latitud, longit, map_zoom) {
+                if (map_zoom == 0)
+                    map_zoom = 16;
+
+                // set center & zoom
+                myMap.setCenter([longit, latitud], map_zoom);
+            }
+        </script>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+﻿@model MangersDAL.Models.Manga
+
+@{
+    Layout = "_LayoutWithoutFooter";
+}
+
+<link rel="stylesheet" href="~/css/mangachapters.css" />
+<link rel="stylesheet" href="~/css/mangamaininfo.css" />
+
+<div class="main-info-mainContainer">
+    <div class="main-info-mainContainer-topblock">
+        <div class="main-info-mainContainer-topblock-right">
+            <div class="main-info-mainContainer-topblock-right-card">
+                <div class="main-info-mainContainer-topblock-right-card-picture">
+                    <img src="@Model.PhotoPath">
+                </div>
+                <div class="main-info-mainContainer-topblock-right-card-buttons">
+                    <a asp-controller="Manga" asp-action="MangaChapterView" asp-route-mangaId="@Model.MangaId" asp-route-curentChapterNumber="1" asp-route-user="@User.Identity.Name" class="main-info-mainContainer-topblock-right-card-buttons-read">
+                        Читать
+                    </a>
+                    <div class="main-info-mainContainer-topblock-right-card-buttons-bookmark">
+                        Добавить в закладки
+                        <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                            <path d="M7 10l5 5 5-5z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-info-mainContainer-topblock-left">
+            <h1 class="main-info-mainContainer-topblock-left-title">
+                @Model.Name
+            </h1>
+            <div class="main-info-mainContainer-topblock-left-info">
+                <div class="main-info-mainContainer-topblock-left-info-rating">
+                    <svg class="layout-header-icon-svg" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                    @Model.Rating
+                </div>
+                <a href="#" class="main-info-mainContainer-topblock-left-info-type">
+                    @Model.MangaType
+                </a>
+                <div class="main-info-mainContainer-topblock-left-info-date">@Model.YearOfCreation</div>
+            </div>
+        </div>
+    </div>
+    <div class="main-info-mainContainer-bottomblock">
+        <div class="main-info-mainContainer-bottomblock-container">
+            <div class="main-info-mainContainer-bottomblock-container-leftblock">
+
+            </div>
+            <div class="main-info-mainContainer-bottomblock-container-rightblock">
+                <div class="main-info-mainContainer-bottomblock-container-rightblock-nav">
+                        <a asp-controller="Manga" asp-action="MangaMainInfo" asp-route-mangaId="@Model.MangaId">
+                            <button>
+                                Описание
+                            </button>
+                        </a>
+                    @if (Model.Chapters != null)
+                    {
+                        <button>
+                            Главы(@Model.Chapters.Count)
+                        </button>
+                    }
+                    else
+                    {
+                        <button>
+                            Главы
+                        </button>
+                    }
+
+                </div>
+                <div class="main-info-mainContainer-bottomblock-container-rightblock-chapters">
+                    @if (Model.Chapters != null && Model.Chapters.Count != 0)
+                    {
+                        @foreach (var chapter in Model.Chapters)
+                        {
+                            <div class="main-info-mainContainer-bottomblock-container-rightblock-chapters-chapter">
+                                <div class="main-info-mainContainer-bottomblock-container-rightblock-chapters-chapter-wtf">
+                                    1
+                                </div>
+                                <a asp-controller="Manga" asp-action="MangaChapterView" asp-route-mangaId="@Model.MangaId" asp-route-curentChapterNumber="@chapter.ChapterNumber" asp-route-user="@User.Identity.Name" class="main-info-mainContainer-bottomblock-container-rightblock-chapters-chapter-info">
+                                    <h6 class="main-info-mainContainer-bottomblock-container-rightblock-chapters-chapter-info-number">
+                                        Глава @chapter.ChapterNumber
+                                    </h6>
+                                    <div class="main-info-mainContainer-bottomblock-container-rightblock-chapters-chapter-info-dateANDcreator">
+                                        <span>@chapter.DateOfCreation</span>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <h1>Глав нету :(</h1>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
